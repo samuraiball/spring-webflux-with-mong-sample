@@ -2,7 +2,7 @@ package com.demo.reactive.functional;
 
 import com.demo.reactive.controller.EmployeesReactiveController;
 import com.demo.reactive.model.document.Employee;
-import org.assertj.core.util.Arrays;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +24,10 @@ public class EmployeesReactiveTest {
     @Autowired
     MongoTemplate mongoTemplate;
 
+    @Before
+    public void setup() {
+        mongoTemplate.getDb().drop();
+    }
 
     @Test
     public void 正常_Id検索() {
